@@ -11,6 +11,8 @@
 
 .classroom-panel,.classroom-learning{background:#fffdf6;border:1px solid #d9e5d9;border-radius:14px;padding:16px 20px;margin:0 0 18px;color:#35564a}.classroom-title{display:flex;gap:15px;align-items:center;margin-bottom:12px}.classroom-title strong{font-size:17px}.classroom-title span,.classroom-panel p,.classroom-learning p{font-size:13px;color:#617a6b}.classroom-controls{display:flex;flex-wrap:wrap;gap:10px;align-items:end}.classroom-controls label,#teacherDialog label{display:flex;flex-direction:column;gap:5px;font-size:13px;font-weight:600}.classroom-controls select,.classroom-controls input,#teacherDialog input,#teacherDialog select{border:1px solid #b8cdbd;background:white;border-radius:7px;padding:8px;font-size:14px;color:#284f3c}.class-btn{display:inline-block;background:#e2eee4;color:#215941;border:1px solid #c4d7c7;border-radius:8px;padding:9px 12px;cursor:pointer;font-size:13px}.classroom-panel p{margin:10px 0 0}#saveWarning{color:#b33;font-size:14px;font-weight:bold}.classroom-learning{margin:24px 0 0}.classroom-learning p{line-height:1.7}.tutorial-notice,.edge-warning{position:absolute;top:12px;left:50%;transform:translateX(-50%);background:#215f46;color:white;border-radius:10px;padding:12px 20px;z-index:30;font-size:15px;box-shadow:0 3px 15px #0003}.edge-warning{top:65px;background:#d2781f}#teacherDialog label{margin:12px 0}#teacherDialog .dialog-actions{display:flex;gap:10px;margin:20px 0}#teacherDialog .dialog-actions .primary-btn{width:auto;padding:0 18px}#canvasWrap:fullscreen{width:100vw;height:100vh}.round-stats b{font-size:18px}.arena-bottom{font-size:12px}.canvas-wrap:fullscreen .tutorial-notice{position:absolute}.skin-card strong{font-size:12px}.skin-card small{font-size:11px}@media(max-width:600px){.classroom-title{display:block}.classroom-title span{display:block;margin-top:6px}.classroom-controls label{flex:1 1 40%}}
 [hidden]{display:none!important}
+
+.skill-info{position:absolute;left:20px;bottom:47px;background:#fffbeedb;padding:6px 10px;border-radius:8px;color:#285d49;font-size:12px;z-index:3}.skill-button{position:absolute;right:20px;bottom:125px;z-index:4;background:#f4d787;color:#405b39;border:1px solid #fff;border-radius:20px;padding:10px 14px;cursor:pointer}#onlineBtn{margin-bottom:8px;background:#587da2}#startBtn{margin-top:4px}
 </style>
 </head>
 <body>
@@ -29,7 +31,7 @@
   </header>
   <main>
     <section class="intro"><div><div class="eyebrow"><span></span>CAT SNAKE ARENA <span class="edition">VOL. 01</span></div><h1>猫猫<span>大作战</span><span class="title-paw">✦</span></h1><p>一口小鱼，一点长大。今天，也要做最厉害的猫！</p></div><div class="intro-badge"><svg><use href="#i-fish"/></svg><div><span>吃鱼 · 长大 · 收集</span><small>一场软乎乎的生存大冒险</small></div></div></section>
-    <section class="classroom-panel" aria-label="游戏设置"><div class="classroom-title"><strong>⚙ 游戏设置</strong><span>选择你喜欢的操作方式和游戏难度</span></div><div class="classroom-controls"><label>操作方式<select id="controlMode"><option value="keys">方向键 / WASD</option><option value="mouse">鼠标控制</option></select></label><label>难度<select id="difficulty"><option value="easy">入门</option><option value="standard">标准</option><option value="challenge">挑战</option></select></label><label>每局时长<select id="roundLimit"><option value="180">3分钟</option><option value="300">5分钟</option><option value="480">8分钟</option><option value="0" selected>不限时</option></select></label><label>游戏存档<select id="profileMode"><option value="temporary">临时存档</option><option value="personal">个人档</option></select></label><label id="profileNameLabel" hidden>存档名称<input id="profileCode" maxlength="20" placeholder="例如 A01"></label><button id="teacherBtn" class="class-btn">游戏选项</button><button id="fullBtn" class="class-btn">全屏游戏</button><button id="tutorialBtn" class="class-btn">新手练习</button></div><p id="profileNotice">个人存档：进度保存在当前浏览器。</p><div id="saveWarning" role="alert" hidden>存档保存失败，本次进度可能无法保留。请使用导出存档。</div></section><dialog id="teacherDialog"><h2>游戏选项</h2><p>这些设置保存在当前电脑和浏览器。</p><label>AI数量 <input id="botSetting" type="number" min="0" max="10" value="3"></label><label>移动速度 <select id="speedSetting"><option value="0.8">慢速</option><option value="1" selected>标准</option><option value="1.2">快速</option></select></label><label>画面质量 <select id="qualitySetting"><option value="normal">标准</option><option value="low">流畅模式</option></select></label><label>音效 <select id="soundSetting"><option value="off">关闭</option><option value="on">开启</option></select></label><div class="dialog-actions"><button id="teacherSave" class="primary-btn">保存设置</button><button id="teacherClose" class="class-btn">关闭</button></div><p>可以使用不同的存档名称，分别保存收集进度。</p><button id="exportBtn" class="class-btn">导出当前存档</button> <label class="class-btn">导入存档<input id="importFile" type="file" accept="application/json,.json" hidden></label></dialog><div class="game-layout">
+    <section class="classroom-panel" aria-label="游戏设置"><div class="classroom-title"><strong>⚙ 游戏设置</strong><span>选择你喜欢的操作方式和游戏难度</span></div><div class="classroom-controls"><label>操作方式<select id="controlMode"><option value="keys">方向键 / WASD</option><option value="mouse">鼠标控制</option></select></label><label>难度<select id="difficulty"><option value="easy">入门</option><option value="standard">标准</option><option value="challenge">挑战</option></select></label><label>每局时长<select id="roundLimit"><option value="180">3分钟</option><option value="300">5分钟</option><option value="480">8分钟</option><option value="0" selected>不限时</option></select></label><label>游戏存档<select id="profileMode"><option value="temporary">临时存档</option><option value="personal">个人档</option></select></label><label id="profileNameLabel" hidden>存档名称<input id="profileCode" maxlength="20" placeholder="例如 A01"></label><button id="teacherBtn" class="class-btn">游戏选项</button><button id="fullBtn" class="class-btn">全屏游戏</button><button id="tutorialBtn" class="class-btn">新手练习</button></div><p id="profileNotice">个人存档：进度保存在当前浏览器。</p><div id="saveWarning" role="alert" hidden>存档保存失败，本次进度可能无法保留。请使用导出存档。</div></section><dialog id="teacherDialog"><h2>游戏选项</h2><p>这些设置保存在当前电脑和浏览器。</p><input id="botSetting" type="hidden" value="4"><label>移动速度 <select id="speedSetting"><option value="0.8">慢速</option><option value="1" selected>标准</option><option value="1.2">快速</option></select></label><label>画面质量 <select id="qualitySetting"><option value="normal">标准</option><option value="low">流畅模式</option></select></label><label>音效 <select id="soundSetting"><option value="off">关闭</option><option value="on">开启</option></select></label><div class="dialog-actions"><button id="teacherSave" class="primary-btn">保存设置</button><button id="teacherClose" class="class-btn">关闭</button></div><p>可以使用不同的存档名称，分别保存收集进度。</p><button id="exportBtn" class="class-btn">导出当前存档</button> <label class="class-btn">导入存档<input id="importFile" type="file" accept="application/json,.json" hidden></label></dialog><div class="game-layout">
       <section class="arena-card" aria-label="猫咪竞技场">
         <div class="arena-top"><div class="arena-label"><span class="status-dot"></span><strong>小鱼池塘</strong><span class="mode-label">自由生存</span></div><div class="round-stats"><span><svg><use href="#i-fish"/></svg><b id="fishCount">0</b><small>小鱼</small></span><span><svg><use href="#i-paw"/></svg><b id="lengthCount">16</b><small>长度</small></span><button id="pauseBtn" class="icon-btn small" aria-label="暂停游戏" disabled>Ⅱ</button></div></div>
         <div class="canvas-wrap" id="canvasWrap">
@@ -37,9 +39,9 @@
           <div class="arena-corner"><span class="live-dot"></span><span id="aliveCount">7</span> 只猫咪正在摸鱼</div>
           <div class="leaderboard" id="leaderboard"><span class="board-title">池塘排行榜</span><ol id="leaderList"></ol></div>
           <div class="minimap"><canvas id="minimap" width="150" height="100" aria-label="竞技场小地图"></canvas><span>池塘全景</span></div>
-          <div class="boost-bar" id="boostBar"><svg><use href="#i-bolt"/></svg><div><span id="boostFill"></span></div><small>长按空格加速</small></div>
+          <div id="skillInfo" class="skill-info">E · 技能准备就绪</div><button id="skillButton" class="skill-button">技能 E</button><div class="boost-bar" id="boostBar"><svg><use href="#i-bolt"/></svg><div><span id="boostFill"></span></div><small>长按空格加速</small></div>
           <div class="overlay" id="overlay">
-            <div class="lobby-panel" id="lobbyPanel"><div class="lobby-cat"><canvas id="heroCat" width="250" height="146"></canvas><span class="hero-spark s1">✦</span><span class="hero-spark s2">✧</span></div><span class="tiny-label">READY, SET, MEOW!</span><h2>小猫咪，大胃口。</h2><p>追着小鱼跑，把快乐吃成一长条。</p><label class="name-input"><svg><use href="#i-paw"/></svg><input id="playerName" maxlength="10" autocomplete="nickname" aria-label="猫咪昵称" placeholder="给你的小猫起个名字" value="小鱼收集家"></label><button class="primary-btn" id="startBtn">出发，吃小鱼 <svg><use href="#i-arrow"/></svg></button><div class="lobby-hint"><span>⌨ 方向键 / WASD</span><i>·</i><span>鼠标转向</span><i>·</i><span>触屏摇杆</span></div></div>
+            <div class="lobby-panel" id="lobbyPanel"><div class="lobby-cat"><canvas id="heroCat" width="250" height="146"></canvas><span class="hero-spark s1">✦</span><span class="hero-spark s2">✧</span></div><span class="tiny-label">READY, SET, MEOW!</span><h2>小猫咪，大胃口。</h2><p>追着小鱼跑，把快乐吃成一长条。</p><label class="name-input"><svg><use href="#i-paw"/></svg><input id="playerName" maxlength="10" autocomplete="nickname" aria-label="猫咪昵称" placeholder="给你的小猫起个名字" value="小鱼收集家"></label><button class="primary-btn" id="onlineBtn">联网对战 · 一起进入大地图</button><p id="onlineHint" style="margin:8px 0;color:#60796b">联网对战需要游戏服务在线</p><button class="primary-btn" id="startBtn">出发，吃小鱼 <svg><use href="#i-arrow"/></svg></button><div class="lobby-hint"><span>⌨ 方向键 / WASD</span><i>·</i><span>鼠标转向</span><i>·</i><span>触屏摇杆</span></div></div>
             <div class="pause-panel hidden" id="pausePanel"><div class="pause-emoji">☾</div><span class="tiny-label">TAKE A CAT NAP</span><h2>伸个懒腰，歇一会。</h2><p>所有猫咪都在等你回来。</p><button class="primary-btn" id="resumeBtn">继续摸鱼 <svg><use href="#i-arrow"/></svg></button><button class="text-btn" id="pauseHomeBtn">回到猫咪小窝</button></div>
             <div class="result-panel hidden" id="resultPanel"><span class="result-icon">☁</span><span class="tiny-label">A LITTLE LONGER NEXT TIME</span><h2 id="resultTitle">下次，长得更长一点。</h2><p id="deathReason"></p><div class="result-stats"><div><b id="resultFish">0</b><span>吃到小鱼</span></div><div><b id="resultLength">16</b><span>最高长度</span></div><div><b id="resultKills">0</b><span>击败猫咪</span></div></div><div id="recordNote" class="record-note"></div><button class="primary-btn" id="againBtn">再来一局 <svg><use href="#i-arrow"/></svg></button><button class="text-btn" id="homeBtn">回小窝换皮肤</button></div>
           </div>
@@ -49,7 +51,7 @@
         <div class="arena-bottom"><span><i class="you-dot"></i>你的猫咪 <strong id="yourCatName">奶油橘猫</strong></span><span id="roundTime">05:00</span><span id="timeLabel">剩余时间</span><span class="arena-tip">自己的尾巴，可以放心踩。</span></div>
       </section>
       <aside class="side-panel">
-        <section class="wardrobe"><div class="section-top"><div><span class="tiny-label">THE CAT CLOSET</span><h2>猫咪小衣橱<span id="skinCount">1 / 6</span></h2></div><svg><use href="#i-paw"/></svg></div><p class="section-desc">小鱼吃得越多，新朋友来得越多。</p><div class="skin-grid" id="skinGrid"></div><div class="unlock-progress"><div><span id="nextUnlockLabel">下一位：燕尾服猫</span><strong id="unlockCount">0 / 25</strong></div><div class="progress-track"><span id="unlockFill"></span></div><p id="unlockHint">累计吃鱼即可解锁，无需消耗小鱼</p></div></section>
+        <section class="wardrobe"><div class="section-top"><div><span class="tiny-label">THE CAT CLOSET</span><h2>猫咪小衣橱<span id="skinCount">1 / 11</span></h2></div><svg><use href="#i-paw"/></svg></div><p class="section-desc">小鱼吃得越多，新朋友来得越多。</p><div class="skin-grid" id="skinGrid"></div><p id="skillDescription" class="section-desc"></p><div class="unlock-progress"><div><span id="nextUnlockLabel">下一位：燕尾服猫</span><strong id="unlockCount">0 / 25</strong></div><div class="progress-track"><span id="unlockFill"></span></div><p id="unlockHint">累计吃鱼即可解锁，无需消耗小鱼</p></div></section>
         <section class="best-card"><span class="best-icon"><svg><use href="#i-cup"/></svg></span><div><span>你的最长猫咪</span><strong id="bestLength">16<small>长度</small></strong></div><div class="best-stamp">PERSONAL<br>BEST</div></section>
         <div class="save-note"><span>✓</span> 收集进度自动保存在当前浏览器</div>
       </aside>
@@ -57,7 +59,7 @@
     <section class="rules-strip"><div class="rules-heading"><span class="tiny-label">HOW TO MEOW</span><h2>池塘生存法则</h2></div><div class="rule"><span class="rule-icon mint"><svg><use href="#i-fish"/></svg></span><div><strong>小鱼一口，快乐加长</strong><p>吃掉小鱼，长成池塘里的大猫咪。</p></div></div><div class="rule"><span class="rule-icon peach">↗</span><div><strong>绕过边缘，避开其他猫</strong><p>头撞墙或其他猫会阵亡，自己碰自己没事。</p></div></div><div class="rule"><span class="rule-icon lavender"><svg><use href="#i-paw"/></svg></span><div><strong>巧妙走位，收获一池小鱼</strong><p>对手撞到你会阵亡，身体变成小鱼。</p></div></div></section>
     <footer><span>MADE FOR LITTLE MOMENTS OF JOY.</span><span>慢慢长大，也是一种超能力。 <svg><use href="#i-paw"/></svg></span></footer>
   </main>
-  <dialog id="helpDialog"><button class="dialog-close icon-btn" id="closeHelp" aria-label="关闭玩法">×</button><span class="tiny-label">CAT SNAKE FIELD GUIDE</span><h2>成为池塘里的大猫咪</h2><div class="help-rows"><p><b>怎么移动</b><span>猫咪会一直前进。鼠标指向你想去的方向，或使用方向键 / WASD；手机拖动左下角摇杆。</span></p><p><b>怎么加速</b><span>按住空格、鼠标左键或右下角加速键。松开后能量自动恢复，不扣长度。</span></p><p><b>碰撞规则</b><span>头碰边缘或其他猫咪身体会阵亡；自己的身体随便碰。双方迎面相撞会同时阵亡。阵亡的猫咪身体会变成鱼。</span></p><p><b>怎么解锁</b><span>初始只有奶油橘猫。累计吃 15 / 40 / 80 / 140 / 240 条鱼，依次解锁燕尾服猫、银灰虎斑、三花猫、暹罗猫、炫彩猫。</span></p><p><b>炫彩猫</b><span>身体越长，沿身体展开的彩虹色带越多；颜色还会随时间缓缓流动。</span></p><p><b>小提醒</b><span>AI 对手会找鱼、避障、加速和争夺空间。Esc / P 暂停；切到其他窗口时也会自动暂停。</span></p></div><button id="helpOk" class="primary-btn">明白了，喵！</button></dialog>
+  <dialog id="helpDialog"><button class="dialog-close icon-btn" id="closeHelp" aria-label="关闭玩法">×</button><span class="tiny-label">CAT SNAKE FIELD GUIDE</span><h2>成为池塘里的大猫咪</h2><div class="help-rows"><p><b>怎么移动</b><span>猫咪会一直前进。鼠标指向你想去的方向，或使用方向键 / WASD；手机拖动左下角摇杆。</span></p><p><b>怎么加速</b><span>按住空格、鼠标左键或右下角加速键。松开后能量自动恢复，不扣长度。</span></p><p><b>碰撞规则</b><span>头碰边缘或其他猫咪身体会阵亡；自己的身体随便碰。双方迎面相撞会同时阵亡。阵亡的猫咪身体会变成鱼。</span></p><p><b>怎么解锁</b><span>初始只有奶油橘猫，累计吃鱼解锁其他十只猫。每只猫有一个独特技能，按 E 或点技能按钮使用。</span></p><p><b>炫彩猫</b><span>身体越长，沿身体展开的彩虹色带越多；颜色还会随时间缓缓流动。</span></p><p><b>小提醒</b><span>AI 对手会找鱼、避障、加速和争夺空间。Esc / P 暂停；切到其他窗口时也会自动暂停。</span></p></div><button id="helpOk" class="primary-btn">明白了，喵！</button></dialog>
   <div id="toast" class="global-toast" role="status"></div>
   <script>(function(root,factory){if(typeof module==='object'&&module.exports)module.exports=factory();else root.CatArena=factory()})(typeof globalThis!=='undefined'?globalThis:this,function(){
   'use strict';
@@ -68,8 +70,14 @@
     {id:'tabby',name:'银灰虎斑',need:40,body:'#a9b9b9',light:'#e4e9df',dark:'#718b8c',ear:'#d8afa9'},
     {id:'calico',name:'三花猫',need:80,body:'#f4ecdc',light:'#fff8e8',dark:'#5d6059',ear:'#e7b1a0'},
     {id:'siamese',name:'暹罗猫',need:140,body:'#dcc9ab',light:'#f1e4cc',dark:'#796b68',ear:'#b29995'},
-    {id:'rainbow',name:'炫彩猫',need:240,body:'#b4d3bc',light:'#e5efc3',dark:'#99bda0',ear:'#dfb1c9'}
+    {id:'blue',name:'海蓝猫',need:180,body:'#85bada',light:'#d4f0ff',dark:'#5487a5',ear:'#e5b0c4'},
+    {id:'cow',name:'奶牛猫',need:220,body:'#f1eee6',light:'#ffffff',dark:'#3d4a52',ear:'#eabac0'},
+    {id:'rainbow',name:'炫彩猫',need:240,body:'#b4d3bc',light:'#e5efc3',dark:'#99bda0',ear:'#dfb1c9'},
+    {id:'black',name:'黑夜猫',need:300,body:'#43415e',light:'#d1cdec',dark:'#29263c',ear:'#b998b2'},
+    {id:'pink',name:'樱花猫',need:380,body:'#eeb9c8',light:'#fff0f0',dark:'#c887a2',ear:'#f5d1dd'},
+    {id:'gold',name:'阳光猫',need:480,body:'#f3ca69',light:'#fff0b1',dark:'#ca9544',ear:'#e7a8a2'}
   ];
+  const SKILLS={orange:['橘子冲刺',2.8,14,{speed:1.55}],tuxedo:['绅士吸鱼',5,17,{magnet:75}],tabby:['灵巧转弯',5,15,{turn:1.8}],calico:['双倍成长',5,20,{growth:2}],siamese:['活力充电',1,18,{refill:100}],blue:['海浪冲刺',4,19,{speed:1.3,turn:1.25}],cow:['奶牛寻鱼',4,18,{magnet:48,speed:1.15}],rainbow:['彩虹盛宴',5,25,{growth:2,magnet:45}],black:['夜行疾风',3,19,{speed:1.38,turn:1.45}],pink:['樱花补给',4,19,{refill:55,magnet:35}],gold:['阳光加速',3,19,{refill:40,speed:1.3}]};
   const clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
   const dist2=(a,b)=>(a.x-b.x)**2+(a.y-b.y)**2;
   const angleDiff=(a,b)=>Math.atan2(Math.sin(a-b),Math.cos(a-b));
@@ -88,13 +96,13 @@
   }
   class Arena{
     constructor(options={}){
-      this.width=options.width||1800;this.height=options.height||1200;this.random=options.random||Math.random;
+      this.width=options.width||7200;this.height=options.height||4800;this.random=options.random||Math.random;
       this.onEat=options.onEat||(()=>{});this.onDeath=options.onDeath||(()=>{});this.onKill=options.onKill||(()=>{});
       this.cats=[];this.food=[];this.particles=[];this.time=0;this.state='lobby';this.nextId=0;this.botCount=6;this.player=null;this.respawns=[];this.speedFactor=1;this.botStartLength=16;this.lowQuality=false;
     }
     randomPoint(pad=65){return{x:pad+this.random()*(this.width-2*pad),y:pad+this.random()*(this.height-2*pad)}}
     makeCat({x,y,angle=0,skin='orange',name='小猫',player=false,length=16}){
-      const c={id:this.nextId++,x,y,angle,targetAngle:angle,skin,name,player,alive:true,radius:12,segments:[],length,fish:0,kills:0,boost:100,sprinting:false,boostLocked:false,aiClock:0,aiTarget:null,grace:1.5,blink:this.random()*5};
+      const c={id:this.nextId++,x,y,angle,targetAngle:angle,skin,name,player,alive:true,radius:12,segments:[],length,fish:0,kills:0,boost:100,sprinting:false,boostLocked:false,skillTime:0,skillCooldown:0,skillEffect:null,aiClock:0,aiTarget:null,grace:1.5,blink:this.random()*5};
       for(let i=0;i<length;i++)c.segments.push({x:x-Math.cos(angle)*i*7,y:y-Math.sin(angle)*i*7});
       this.cats.push(c);if(player)this.player=c;return c;
     }
@@ -105,14 +113,14 @@
     spawnBot(i=0){
       const p=this.findSpawn();
       const names=['鱼丸同学','芝麻糊','摸鱼队长','小年糕','布丁不加糖','彩虹屁屁'];
-      return this.makeCat({...p,angle:Math.atan2(this.height/2-p.y,this.width/2-p.x),skin:SKINS[i%6].id,name:names[i%6],length:this.botStartLength});
+      return this.makeCat({...p,angle:Math.atan2(this.height/2-p.y,this.width/2-p.x),skin:SKINS[i%SKINS.length].id,name:names[i%6],length:this.botStartLength});
     }
     addFish(p,loot=false){this.food.push({x:p.x,y:p.y,phase:this.random()*TAU,rotation:this.random()*TAU,loot,value:1})}
     reset(skin='orange',name='小鱼收集家',lobby=false){
       this.cats=[];this.food=[];this.particles=[];this.time=0;this.respawns=[];this.nextId=0;this.state=lobby?'lobby':'playing';
       this.makeCat({x:this.width/2,y:this.height/2,angle:-.15,skin,name,player:true});
       for(let i=0;i<this.botCount;i++)this.spawnBot(i);
-      for(let i=0;i<200;i++)this.addFish(this.randomPoint(35));
+      for(let i=0;i<900;i++)this.addFish(this.randomPoint(35));
       // A welcoming fish trail, clear of the player's initial body.
       for(let i=0;i<9;i++)this.addFish({x:this.width/2+75+i*34,y:this.height/2-12-Math.sin(i*.4)*26});
       return this.player;
@@ -142,16 +150,18 @@
       }
       c.targetAngle=target;c.sprinting=c.boost>30&&bestD>210**2&&scoreBest>35&&this.random()>.65;
     }
+    activateSkill(c){const d=SKILLS[c.skin];if(!c.alive||c.skillCooldown>0||!d)return false;c.skillTime=d[1];c.skillCooldown=d[2];c.skillEffect=d[3];if(d[3].refill)c.boost=clamp(c.boost+d[3].refill,0,100);return true}
     moveCat(c,dt){
+      c.skillTime=Math.max(0,c.skillTime-dt);c.skillCooldown=Math.max(0,c.skillCooldown-dt);if(c.skillTime<=0)c.skillEffect=null;
       c.grace=Math.max(0,c.grace-dt);
-      c.angle+=clamp(angleDiff(c.targetAngle,c.angle),-3.9*dt,3.9*dt);
+      c.angle+=clamp(angleDiff(c.targetAngle,c.angle),-3.9*(c.skillEffect?.turn||1)*dt,3.9*(c.skillEffect?.turn||1)*dt);
       if(c.boost<=0)c.boostLocked=true;
       if(c.boostLocked&&c.boost>=25)c.boostLocked=false;
       const fast=c.sprinting&&!c.boostLocked&&c.boost>0;
       c.boost=clamp(c.boost+(fast?-34:23)*dt,0,100);
       if(c.boost<=0)c.boostLocked=true;
       c.fast=fast;
-      const speed=(fast?205:115)*this.speedFactor;
+      const speed=(fast?205:115)*this.speedFactor*(c.skillEffect?.speed||1);
       c.x+=Math.cos(c.angle)*speed*dt;c.y+=Math.sin(c.angle)*speed*dt;
       c.segments[0]={x:c.x,y:c.y};
       while(c.segments.length<c.length){const tail=c.segments[c.segments.length-1];c.segments.push({...tail})}
@@ -184,13 +194,13 @@
       for(let i=0;i<c.segments.length;i+=dropStep){const p=c.segments[i];this.addFish({x:clamp(p.x,18,this.width-18),y:clamp(p.y,18,this.height-18)},true)}
       for(let i=0;i<(this.lowQuality?4:12);i++)this.particles.push({x:c.x,y:c.y,vx:(this.random()-.5)*120,vy:(this.random()-.5)*120,life:.8,maxLife:.8,color:SKINS.find(s=>s.id===c.skin).body,size:3});
       if(killer&&killer!==c){killer.kills++;this.onKill(killer,c)}
-      if(!c.player)this.respawns.push({at:this.time+3+this.random()*2,index:SKINS.findIndex(s=>s.id===c.skin)});
+      if(!c.player&&!c.human)this.respawns.push({at:this.time+3+this.random()*2,index:SKINS.findIndex(s=>s.id===c.skin)});
       this.onDeath(c,reason,killer);
     }
     eat(c){
       for(let i=this.food.length-1;i>=0;i--){
-        const f=this.food[i];if(dist2(c,f)<(c.radius+8)**2){
-          this.food.splice(i,1);c.fish+=f.value;c.length+=3;
+        const f=this.food[i];if(dist2(c,f)<(c.radius+8+(c.skillEffect?.magnet||0))**2){
+          this.food.splice(i,1);c.fish+=f.value;c.length+=3*(c.skillEffect?.growth||1);
           for(let j=0;j<(this.lowQuality?1:4);j++)this.particles.push({x:f.x,y:f.y,vx:(this.random()-.5)*60,vy:(this.random()-.5)*60,life:.5,maxLife:.5,color:f.loot?'#deb174':'#85b6a4',size:2.5});
           this.onEat(c,f);
         }
@@ -199,7 +209,7 @@
     update(dt){
       if(this.state!=='playing')return;
       dt=Math.min(.025,Math.max(0,dt));this.time+=dt;
-      for(const c of this.cats){if(!c.alive)continue;if(!c.player)this.steerAI(c,dt);this.moveCat(c,dt)}
+      for(const c of this.cats){if(!c.alive)continue;if(!c.player){this.steerAI(c,dt);if(c.skillCooldown<=0&&this.random()<.002)this.activateSkill(c)}this.moveCat(c,dt)}
       // Resolve all collisions from the same frame before removing a body.
       const deaths=this.collisionDeaths();
       for(const d of deaths)this.killCat(d.cat,d.reason,d.killer);
@@ -208,16 +218,16 @@
       for(let i=this.respawns.length-1;i>=0;i--)if(this.respawns[i].at<=this.time){this.spawnBot(this.respawns[i].index);this.respawns.splice(i,1)}
       // Remove inactive entries so long sessions do not retain old opponents.
       if(this.cats.length>25)this.cats=this.cats.filter(c=>c.alive||c.player);
-      let added=0;while(this.food.length<200&&added++<3)this.addFish(this.randomPoint(30));
+      let added=0;while(this.food.length<900&&added++<3)this.addFish(this.randomPoint(30));
       for(const p of this.particles){p.life-=dt;p.x+=p.vx*dt;p.y+=p.vy*dt}
       this.particles=this.particles.filter(p=>p.life>0);
     }
   }
-  return{Arena,SKINS,DEFAULT_PROFILE,cleanProfile,unlocked,nextSkin,rainbowHue,clamp,dist2,angleDiff};
+  return{Arena,SKINS,SKILLS,DEFAULT_PROFILE,cleanProfile,unlocked,nextSkin,rainbowHue,clamp,dist2,angleDiff};
 });
 </script><script>(function(){
   'use strict';
-  const {Arena,SKINS,cleanProfile,unlocked,nextSkin,rainbowHue,clamp}=CatArena;
+  const {Arena,SKINS,SKILLS,cleanProfile,unlocked,nextSkin,rainbowHue,clamp}=CatArena;
   const $=id=>document.getElementById(id),canvas=$('game'),ctx=canvas.getContext('2d'),mapCtx=$('minimap').getContext('2d');
   const CONFIG_KEY='miaow-classroom-settings-v1';let config={control:'keys',difficulty:'easy',limit:0,mode:'personal',code:'',bots:3,speed:1,quality:'normal',sound:false};
   try{const v=JSON.parse(localStorage.getItem(CONFIG_KEY));if(v&&typeof v==='object')config={...config,...v}}catch{}
@@ -225,7 +235,7 @@
   function storageKey(){return config.mode==='personal'?'miaow-class-student-'+encodeURIComponent(config.code.trim()||'default'):null}
   function loadProfile(){const k=storageKey();if(!k){profile=temporaryProfile;return}try{let saved=localStorage.getItem(k);if(!saved&&!config.code.trim())saved=localStorage.getItem('miaow-arena-v1');profile=cleanProfile(JSON.parse(saved))}catch{profile=cleanProfile(null)}}
   loadProfile();
-  let dirty=false,lastSave=0,mode='lobby',soundContext=null,pointer=null,inputMode='keys',keys=new Set(),mouseBoost=false,touchBoost=false,joystickVector=null,previous=0,accumulator=0,hudClock=0,visualTime=0,resultScheduled=false,toastTimer=null,arenaToastTimer=null;
+  let online=false,onlineToken=null,onlineEvents=null,lastOnlineSend=0,onlineSkill=false,onlinePreviousFish=0;let dirty=false,lastSave=0,mode='lobby',soundContext=null,pointer=null,inputMode='keys',keys=new Set(),mouseBoost=false,touchBoost=false,joystickVector=null,previous=0,accumulator=0,hudClock=0,visualTime=0,resultScheduled=false,toastTimer=null,arenaToastTimer=null;
   let view={w:800,h:530,dpr:1,scale:.8,x:0,y:0},startBest=profile.bestLength,roundMax=16;
   const arena=new Arena({
     onEat(c){
@@ -236,11 +246,15 @@
     onKill(killer,victim){if(killer.player){profile.totalKills++;dirty=true;arenaToast('漂亮！'+victim.name+'撞到了你，变成小鱼了');playSound('kill')}},
     onDeath(c,reason,killer){if(c.player){resultScheduled=true;arena.deathReason=reason;arena.killer=killer;playSound('dead')}}
   });
+  function stopOnline(){if(onlineEvents){onlineEvents.close();onlineEvents=null}if(onlineToken){fetch('/api/leave',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({token:onlineToken}),keepalive:true}).catch(()=>{})}online=false;onlineToken=null;onlinePreviousFish=0}
+  function sendOnlineInput(){if(!onlineToken||!arena.player)return;const payload={token:onlineToken,angle:arena.player.targetAngle,boost:arena.player.sprinting,skill:onlineSkill};onlineSkill=false;fetch('/api/input',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)}).catch(()=>{})}
+  async function startOnline(){stopOnline();readControls();applySettings();const name=$('playerName').value.trim().slice(0,10)||'小鱼收集家';try{const res=await fetch('/api/join',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name,skin:profile.skin})});if(!res.ok)throw Error(res.status===409?'地图已满':'无法连接多人服务器');const data=await res.json();onlineToken=data.token;online=true;onlinePreviousFish=0;roundMax=16;startBest=profile.bestLength;mode='playing';arena.state='playing';setOverlay(null);document.body.classList.add('playing');$('pauseBtn').disabled=true;canvas.focus({preventScroll:true});onlineEvents=new EventSource('/api/events?token='+encodeURIComponent(onlineToken));onlineEvents.onmessage=e=>{const state=JSON.parse(e.data);if(state.error){showToast(state.error);home();return}const mine=state.cats.find(c=>c.id===state.me);if(!mine)return;for(const c of state.cats)c.player=c.id===state.me;arena.cats=state.cats;arena.onlineMap=state.mapCats;arena.onlineCount=state.totalCats;arena.player=mine;arena.food=state.food;arena.time=state.time;arena.width=state.width;arena.height=state.height;const delta=Math.max(0,mine.fish-onlinePreviousFish);if(delta){profile.totalFish+=delta;profile.bestLength=Math.max(profile.bestLength,mine.length);dirty=true;renderWardrobe()}onlinePreviousFish=mine.fish;roundMax=Math.max(roundMax,mine.length);if(!mine.alive){arena.deathReason=mine.reason||'wall';arena.killer={name:mine.killerName||'其他猫咪'};stopOnline();finish()} };onlineEvents.onerror=()=>{if(online){showToast('连接中断，请重新加入');home()}}}catch(e){stopOnline();showToast(e.message||'多人服务器暂未开放，请选择单人游戏')}}
+  $('onlineBtn').addEventListener('click',startOnline);$('skillButton').addEventListener('click',()=>{if(mode!=='playing')return;if(online)onlineSkill=true;else if(arena.activateSkill(arena.player))arenaToast('技能：'+SKILLS[arena.player.skin][0]);else showToast('技能冷却中')});
   function save(){if(!storageKey()){temporaryProfile=profile;dirty=false;return}try{localStorage.setItem(storageKey(),JSON.stringify(profile));dirty=false;saveFailed=false;$('saveWarning').hidden=true}catch{saveFailed=true;$('saveWarning').hidden=false}}
   function saveConfig(){try{localStorage.setItem(CONFIG_KEY,JSON.stringify(config))}catch{$('saveWarning').hidden=false}}
   function byId(id){return $(id)}
   function readControls(){config.control=$('controlMode').value;config.difficulty=$('difficulty').value;config.limit=Number($('roundLimit').value);config.mode=$('profileMode').value;config.code=$('profileCode').value.trim().slice(0,20);saveConfig()}
-  function applySettings(){const presets={easy:{bots:3,speed:.8},standard:{bots:6,speed:1},challenge:{bots:8,speed:1.2}};const preset=presets[config.difficulty]||presets.easy;arena.botCount=clamp(Number(config.bots)||0,0,10);arena.speedFactor=Number(config.speed)||preset.speed;arena.botStartLength=16;arena.lowQuality=config.quality==='low';profile.sound=!!config.sound}
+  function applySettings(){const presets={easy:{bots:3,speed:.8},standard:{bots:6,speed:1},challenge:{bots:8,speed:1.2}};const preset=presets[config.difficulty]||presets.easy;arena.botCount=4;arena.speedFactor=Number(config.speed)||preset.speed;arena.botStartLength=16;arena.lowQuality=config.quality==='low';profile.sound=!!config.sound}
   let tutorialStep=0,tutorialStartingFish=0,deathWait=0,countdown=0,roundTimedOut=false;
   function updateTutorial(text){$('tutorialNotice').textContent=text;$('tutorialNotice').classList.toggle('hidden',!text)}
   function startTutorial(){tutorialStep=1;start();tutorialStartingFish=0;updateTutorial('新手练习 1/3：按方向键，让猫咪转个弯。')}
@@ -264,7 +278,7 @@
     const base=s.id==='rainbow'?'hsl('+rainbowHue(0,time)+' 56% 74%)':s.body;
     g.fillStyle=base;g.beginPath();g.moveTo(-14,-1);g.lineTo(-15,-20);g.quadraticCurveTo(-14,-23,-11,-20);g.lineTo(-4,-14);g.quadraticCurveTo(0,-15,5,-14);g.lineTo(12,-21);g.quadraticCurveTo(15,-23,15,-18);g.lineTo(14,-1);g.bezierCurveTo(19,18,-19,18,-14,-1);g.fill();g.shadowColor='transparent';
     g.fillStyle=s.ear;g.beginPath();g.moveTo(-12,-7);g.lineTo(-12,-17);g.lineTo(-6,-12);g.fill();g.beginPath();g.moveTo(7,-12);g.lineTo(12,-17);g.lineTo(12,-7);g.fill();
-    if(s.id==='tuxedo'){g.fillStyle=s.light;g.beginPath();g.moveTo(0,-12);g.bezierCurveTo(-3,-5,-11,1,-10,6);g.bezierCurveTo(-6,14,7,14,11,6);g.bezierCurveTo(10,1,3,-4,0,-12);g.fill()}
+    if(s.id==='cow'){ellipse(g,-8,-7,6,7,s.dark)}else if(s.id==='tuxedo'){g.fillStyle=s.light;g.beginPath();g.moveTo(0,-12);g.bezierCurveTo(-3,-5,-11,1,-10,6);g.bezierCurveTo(-6,14,7,14,11,6);g.bezierCurveTo(10,1,3,-4,0,-12);g.fill()}
     else if(s.id==='calico'){ellipse(g,-8,-7,5,7,'#d4975e');ellipse(g,8,-7,5,7,'#666861')}
     else if(s.id==='siamese'){ellipse(g,0,-1,12,10,s.dark)}
     else if(s.id==='orange'||s.id==='tabby'){g.strokeStyle=s.dark;g.lineWidth=2.3;g.lineCap='round';for(const dx of [-5,0,5]){g.beginPath();g.moveTo(dx,-12);g.lineTo(dx,-8+(dx===0?2:0));g.stroke()}}
@@ -281,11 +295,11 @@
     g.save();if(c.grace>.1&&mode==='playing')g.globalAlpha=.65+Math.sin(t*15)*.15;
     if(c.sprinting&&c.boost>0){g.strokeStyle=skinColor(s,5,t);g.globalAlpha=.35;g.lineWidth=4;g.lineCap='round';for(let i=8;i<pts.length;i+=7){const p=pts[i];g.beginPath();g.moveTo(p.x-Math.cos(c.angle)*10,p.y-Math.sin(c.angle)*10);g.lineTo(p.x-Math.cos(c.angle)*22,p.y-Math.sin(c.angle)*22);g.stroke()}g.globalAlpha=1}
     // One continuous silhouette, followed by small coat markings.
-    for(let i=pts.length-1;i>=1;i--){
-      const p=pts[i],tail=Math.min(1,(pts.length-i+2)/5),r=11.5*tail;if(labels&&(p.x<view.x-40||p.x>view.x+view.w/view.scale+40||p.y<view.y-40||p.y>view.y+view.h/view.scale+40))continue;
+    for(let i=pts.length-1;i>=1;i-=3){
+      const p=pts[i],tail=Math.min(1,(pts.length-i+3)/6),r=10*tail;if(labels&&(p.x<view.x-40||p.x>view.x+view.w/view.scale+40||p.y<view.y-40||p.y>view.y+view.h/view.scale+40))continue;
       ellipse(g,p.x+1,p.y+3,r+1,r,'#365a3612');
       if(i%7===2){const prev=pts[Math.max(0,i-1)],a=Math.atan2(prev.y-p.y,prev.x-p.x),nx=-Math.sin(a),ny=Math.cos(a);ellipse(g,p.x+nx*11,p.y+ny*11,3.5,3.5,s.id==='tuxedo'?s.light:skinColor(s,i,t));ellipse(g,p.x-nx*11,p.y-ny*11,3.5,3.5,s.id==='tuxedo'?s.light:skinColor(s,i,t))}
-      ellipse(g,p.x,p.y,r,r,skinColor(s,i,t));
+      ellipse(g,p.x,p.y,r,r,skinColor(s,i,t));g.strokeStyle='#52665a66';g.lineWidth=1.2;g.beginPath();g.arc(p.x,p.y,r,0,Math.PI*2);g.stroke();ellipse(g,p.x-r*.3,p.y-r*.33,r*.28,r*.2,'#ffffff80');
       if(i%5===0&&(s.id==='tabby'||s.id==='orange')){const q=pts[i-1],a=Math.atan2(q.y-p.y,q.x-p.x);g.save();g.translate(p.x,p.y);g.rotate(a);g.strokeStyle=s.dark;g.globalAlpha=.45;g.lineWidth=2.8;g.lineCap='round';g.beginPath();g.moveTo(-1,-r+1);g.lineTo(1,-r+5);g.moveTo(-1,r-1);g.lineTo(1,r-5);g.stroke();g.restore()}
       if(s.id==='calico'&&i%8<3)ellipse(g,p.x+2,p.y-4,r*.65,r*.6,Math.floor(i/8)%2?'#d79a65':'#686a63');
       if(s.id==='tuxedo'&&i>pts.length-4)ellipse(g,p.x,p.y,r*.8,r*.8,s.light);
@@ -313,37 +327,37 @@
       const b=document.createElement('button');b.className='skin-card'+(!available?' locked':'')+(selected?' selected':'')+(s.id==='rainbow'?' rainbow':'');
       b.setAttribute('aria-label',s.name+(available?(selected?'，已穿上':'，点击穿上'):'，累计吃 '+s.need+' 条鱼解锁'));b.setAttribute('aria-pressed',String(selected));b.setAttribute('aria-disabled',String(!available));
       const c=document.createElement('canvas');c.width=190;c.height=110;c.setAttribute('aria-hidden','true');const name=document.createElement('strong');name.textContent=s.name;const desc=document.createElement('small');
-      if(!available)desc.innerHTML='<svg><use href="#i-lock"/></svg> '+s.need+' 条小鱼';else desc.textContent=selected?'正在穿着':'点击穿上';
+      if(available) b.title='技能：'+SKILLS[s.id][0]+'（E键使用）';if(!available)desc.innerHTML='<svg><use href="#i-lock"/></svg> '+s.need+' 条小鱼';else desc.textContent=(selected?'已穿上 · ':'技能 · ')+SKILLS[s.id][0];
       b.append(c,name,desc);drawSkinPreview(c,s);b.addEventListener('click',()=>{
         if(!available){showToast('「'+s.name+'」还需要 '+(s.need-profile.totalFish)+' 条小鱼，慢慢收集吧');return}
         if(mode==='playing'||mode==='paused'){showToast('这局结束后，回小窝就能换新皮肤');return}
         profile.skin=s.id;dirty=true;save();arena.player.skin=s.id;renderWardrobe();updateHUD();
       });grid.append(b);
     }
-    $('skinCount').textContent=unlocked(profile.totalFish).length+' / 6';
+    $('skinCount').textContent=unlocked(profile.totalFish).length+' / 11';
     const next=nextSkin(profile.totalFish),prev=SKINS[Math.max(0,unlocked(profile.totalFish).length-1)];
-    $('nextUnlockLabel').textContent=next?'下一位：'+next.name:'六位猫咪，全员到齐！';$('unlockCount').textContent=next?profile.totalFish+' / '+next.need:profile.totalFish+' 条小鱼';
+    $('nextUnlockLabel').textContent=next?'下一位：'+next.name:'十一位猫咪，全员到齐！';$('unlockCount').textContent=next?profile.totalFish+' / '+next.need:profile.totalFish+' 条小鱼';
     $('unlockFill').style.width=(next?clamp((profile.totalFish-prev.need)/(next.need-prev.need)*100,0,100):100)+'%';$('unlockHint').textContent=next?'累计吃鱼即可解锁，无需消耗小鱼':'炫彩已解锁，去池塘里闪闪发光吧';
     $('bestLength').innerHTML=profile.bestLength+'<small>长度</small>';
     drawSkinPreview($('heroCat'),SKINS.find(s=>s.id===profile.skin),true);
-    $('yourCatName').textContent=SKINS.find(s=>s.id===profile.skin).name;
+    $('yourCatName').textContent=SKINS.find(s=>s.id===profile.skin).name;const skill=SKILLS[profile.skin],fx=skill[3],effects=[];if(fx.speed)effects.push('速度提升');if(fx.turn)effects.push('转弯更灵活');if(fx.magnet)effects.push('吸引附近的小鱼');if(fx.growth)effects.push('吃鱼额外成长');if(fx.refill)effects.push('恢复加速能量');$('skillDescription').textContent='技能：'+skill[0]+' · '+effects.join('、')+' · 持续'+skill[1]+'秒，冷却'+skill[2]+'秒';
   }
   function updateProgress(){const n=nextSkin(profile.totalFish),p=SKINS[Math.max(0,unlocked(profile.totalFish).length-1)];$('unlockCount').textContent=n?profile.totalFish+' / '+n.need:profile.totalFish+' 条小鱼';$('unlockFill').style.width=(n?clamp((profile.totalFish-p.need)/(n.need-p.need)*100,0,100):100)+'%';$('bestLength').innerHTML=profile.bestLength+'<small>长度</small>'}
   function updateHUD(){
     const p=arena.player;if(!p)return;
-    $('fishCount').textContent=p.fish;$('lengthCount').textContent=p.length;$('aliveCount').textContent=arena.cats.filter(c=>c.alive).length;
-    const sec=config.limit>0?Math.max(0,Math.ceil(config.limit-arena.time)):Math.floor(arena.time);$('timeLabel').textContent=config.limit>0?'剩余时间':'已用时间';$('roundTime').textContent=String(Math.floor(sec/60)).padStart(2,'0')+':'+String(sec%60).padStart(2,'0');$('boostFill').style.width=p.boost+'%';
+    $('skillInfo').textContent='E · '+SKILLS[p.skin][0]+' '+(p.skillCooldown>0?'冷却 '+Math.ceil(p.skillCooldown)+'秒':'准备就绪');$('fishCount').textContent=p.fish;$('lengthCount').textContent=p.length;$('aliveCount').textContent=online?arena.onlineCount:arena.cats.filter(c=>c.alive).length;
+    const sec=!online&&config.limit>0?Math.max(0,Math.ceil(config.limit-arena.time)):Math.floor(arena.time);$('timeLabel').textContent=!online&&config.limit>0?'剩余时间':'已用时间';$('roundTime').textContent=String(Math.floor(sec/60)).padStart(2,'0')+':'+String(sec%60).padStart(2,'0');$('boostFill').style.width=p.boost+'%';
     const leaders=arena.cats.filter(c=>c.alive).sort((a,b)=>b.length-a.length).slice(0,5);const list=$('leaderList');list.replaceChildren();
     leaders.forEach((c,i)=>{const row=document.createElement('li');if(c.player)row.className='me';const rank=document.createElement('em');rank.textContent=String(i+1).padStart(2,'0');const name=document.createElement('strong');name.textContent=c.name+(c.player?' · 你':'');const score=document.createElement('b');score.textContent=c.length;row.append(rank,name,score);list.append(row)});updateProgress();
   }
   function setOverlay(panel){$('overlay').classList.toggle('hidden',!panel);for(const id of ['lobbyPanel','pausePanel','resultPanel'])$(id).classList.toggle('hidden',id!==panel)}
   function clearInput(){keys.clear();mouseBoost=false;touchBoost=false;joystickVector=null;pointer=null;$('joystickKnob').style.transform='translate(0,0)'}
   function start(){
-    readControls();applySettings();initAudio();clearInput();roundTimedOut=false;deathWait=0;profile.name=$('playerName').value.trim().slice(0,10)||'小鱼收集家';$('playerName').value=profile.name;profile.runs++;dirty=true;save();startBest=profile.bestLength;roundMax=16;resultScheduled=false;
+    stopOnline();readControls();applySettings();initAudio();clearInput();roundTimedOut=false;deathWait=0;profile.name=$('playerName').value.trim().slice(0,10)||'小鱼收集家';$('playerName').value=profile.name;profile.runs++;dirty=true;save();startBest=profile.bestLength;roundMax=16;resultScheduled=false;
     arena.reset(profile.skin,profile.name,false);mode='playing';arena.state='playing';setOverlay(null);document.body.classList.add('playing');$('pauseBtn').disabled=false;$('pauseBtn').textContent='Ⅱ';$('pauseBtn').setAttribute('aria-label','暂停游戏');$('arenaToast').classList.remove('visible');accumulator=0;canvas.focus({preventScroll:true});updateHUD();
   }
-  function home(){tutorialStep=0;updateTutorial('');mode='lobby';arena.reset(profile.skin,profile.name,true);clearInput();setOverlay('lobbyPanel');document.body.classList.remove('playing');$('pauseBtn').disabled=true;renderWardrobe();updateHUD();save()}
-  function pause(){if(mode!=='playing')return;mode='paused';arena.state='paused';clearInput();setOverlay('pausePanel');document.body.classList.remove('playing');$('pauseBtn').textContent='▶';$('pauseBtn').setAttribute('aria-label','继续游戏');save()}
+  function home(){stopOnline();tutorialStep=0;updateTutorial('');mode='lobby';arena.reset(profile.skin,profile.name,true);clearInput();setOverlay('lobbyPanel');document.body.classList.remove('playing');$('pauseBtn').disabled=true;renderWardrobe();updateHUD();save()}
+  function pause(){if(mode!=='playing')return;if(online){showToast('多人对战无法暂停，返回小窝会退出游戏');return;}mode='paused';arena.state='paused';clearInput();setOverlay('pausePanel');document.body.classList.remove('playing');$('pauseBtn').textContent='▶';$('pauseBtn').setAttribute('aria-label','继续游戏');save()}
   function resume(){if(mode!=='paused')return;mode='countdown';countdown=3;clearInput();$('pausePanel').querySelector('h2').textContent='准备继续：3';$('resumeBtn').disabled=true}
   function finish(){
     resultScheduled=false;mode='dead';document.body.classList.remove('playing');clearInput();$('pauseBtn').disabled=true;const p=arena.player;
@@ -379,7 +393,7 @@
   function renderMinimap(){
     const g=mapCtx,w=150,h=100,sx=w/arena.width,sy=h/arena.height;g.clearRect(0,0,w,h);g.fillStyle='#c9dabb';g.fillRect(0,0,w,h);g.strokeStyle='#aabc9b';g.lineWidth=2;g.strokeRect(1,1,w-2,h-2);
     g.strokeStyle='#f8ffe788';g.lineWidth=1;g.strokeRect(view.x*sx,view.y*sy,view.w/view.scale*sx,view.h/view.scale*sy);
-    for(const c of arena.cats){if(!c.alive)continue;g.beginPath();g.strokeStyle=c.player?'#367c58':'#8d9c7c';g.lineWidth=c.player?3:2;for(let i=0;i<c.segments.length;i+=3){const p=c.segments[i];if(i===0)g.moveTo(p.x*sx,p.y*sy);else g.lineTo(p.x*sx,p.y*sy)}g.stroke();ellipse(g,c.x*sx,c.y*sy,c.player?3:2,c.player?3:2,c.player?'#f9e5a8':'#7f9f76')}
+    if(online&&arena.onlineMap){for(const c of arena.onlineMap)ellipse(g,c.x*sx,c.y*sy,2,2,c.id===arena.player.id?'#f9e5a8':'#7f9f76');return}for(const c of arena.cats){if(!c.alive)continue;g.beginPath();g.strokeStyle=c.player?'#367c58':'#8d9c7c';g.lineWidth=c.player?3:2;for(let i=0;i<c.segments.length;i+=3){const p=c.segments[i];if(i===0)g.moveTo(p.x*sx,p.y*sy);else g.lineTo(p.x*sx,p.y*sy)}g.stroke();ellipse(g,c.x*sx,c.y*sy,c.player?3:2,c.player?3:2,c.player?'#f9e5a8':'#7f9f76')}
   }
   function handleInput(){
     const p=arena.player;if(!p||!p.alive)return;
@@ -394,7 +408,7 @@
     if(mode==='countdown'){countdown-=dt;$('pausePanel').querySelector('h2').textContent='准备继续：'+Math.max(1,Math.ceil(countdown));if(countdown<=0){mode='playing';arena.state='playing';setOverlay(null);document.body.classList.add('playing');$('pauseBtn').textContent='Ⅱ';$('resumeBtn').disabled=false;$('pausePanel').querySelector('h2').textContent='伸个懒腰，歇一会。';accumulator=0;canvas.focus({preventScroll:true})}}
     if(mode==='deathwait'){deathWait-=dt;if(deathWait<=0)finish()}
     if(mode==='playing'){
-      accumulator+=dt;while(accumulator>=1/60&&mode==='playing'){handleInput();arena.update(1/60);roundMax=Math.max(roundMax,arena.player.length);accumulator-=1/60;if(resultScheduled){resultScheduled=false;mode='deathwait';deathWait=.8;arena.state='dead'}else if(config.limit>0&&arena.time>=config.limit){roundTimedOut=true;arena.state='dead';finish()}}
+      accumulator+=dt;while(accumulator>=1/60&&mode==='playing'){handleInput();if(online){if(now-lastOnlineSend>100){lastOnlineSend=now;sendOnlineInput()}accumulator-=1/60;continue}arena.update(1/60);roundMax=Math.max(roundMax,arena.player.length);accumulator-=1/60;if(resultScheduled){resultScheduled=false;mode='deathwait';deathWait=.8;arena.state='dead'}else if(config.limit>0&&arena.time>=config.limit){roundTimedOut=true;arena.state='dead';finish()}}
     }
     const edge=Math.min(arena.player.x,arena.player.y,arena.width-arena.player.x,arena.height-arena.player.y);$('edgeWarning').classList.toggle('hidden',mode!=='playing'||edge>150);render();hudClock+=dt;if(hudClock>.15){hudClock=0;updateHUD()}
     if(dirty&&now-lastSave>650){save();lastSave=now}requestAnimationFrame(tick);
@@ -407,6 +421,7 @@
     if($('helpDialog').open)return;
     if(e.target.tagName==='INPUT'){if(e.key==='Enter'){e.preventDefault();start()}return}
     const key=e.key.toLowerCase();if(['arrowleft','arrowright','arrowup','arrowdown','w','a','s','d',' '].includes(key)&&mode==='playing'){e.preventDefault();keys.add(key)}
+    if(key==='e'&&!e.repeat&&mode==='playing'){e.preventDefault();if(online)onlineSkill=true;else if(arena.activateSkill(arena.player))arenaToast('技能：'+SKILLS[arena.player.skin][0]);else showToast('技能冷却中')}
     if((key==='escape'||key==='p')&&!e.repeat){e.preventDefault();if(mode==='playing')pause();else if(mode==='paused')resume()}
   });document.addEventListener('keyup',e=>keys.delete(e.key.toLowerCase()));
   canvas.addEventListener('pointermove',e=>{if(e.pointerType==='touch'||config.control!=='mouse')return;const r=canvas.getBoundingClientRect();pointer={x:e.clientX-r.left,y:e.clientY-r.top};inputMode='pointer'});
@@ -419,7 +434,7 @@
   $('joystick').addEventListener('pointerup',releaseJoystick);$('joystick').addEventListener('pointercancel',releaseJoystick);
   $('touchBoost').addEventListener('pointerdown',e=>{e.preventDefault();touchBoost=true;$('touchBoost').setPointerCapture(e.pointerId)});$('touchBoost').addEventListener('pointerup',()=>touchBoost=false);$('touchBoost').addEventListener('pointercancel',()=>touchBoost=false);
   window.addEventListener('blur',()=>{if(mode==='playing')pause();save()});document.addEventListener('visibilitychange',()=>{if(document.hidden&&mode==='playing')pause();if(document.hidden)save()});window.addEventListener('pagehide',save);new ResizeObserver(resize).observe($('canvasWrap'));
-  $('playerName').value=profile.name;syncControls();
+  $('playerName').value=profile.name;syncControls();if(location.hostname.endsWith('github.io'))$('onlineHint').textContent='当前网页可玩单人版；联网对战需要另行启动多人游戏服务。';
   $('profileMode').addEventListener('change',switchProfile);$('profileCode').addEventListener('change',switchProfile);
   for(const id of ['controlMode','roundLimit'])$(id).addEventListener('change',()=>{if(mode==='playing'||mode==='paused'||mode==='countdown'){showToast('本局结束后才能更改');syncControls();return}readControls()});
   $('difficulty').addEventListener('change',()=>{if(mode==='playing'||mode==='paused'||mode==='countdown'){showToast('本局结束后才能更改');syncControls();return}readControls();const v={easy:[3,.8],standard:[6,1],challenge:[8,1.2]}[config.difficulty];config.bots=v[0];config.speed=v[1];saveConfig()});
